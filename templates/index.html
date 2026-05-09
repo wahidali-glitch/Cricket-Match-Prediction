@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cricket Match Prediction</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🏏 Cricket Match Prediction System</h1>
+
+        <p class="accuracy">
+            Model Accuracy: {{ accuracy }}%
+        </p>
+
+        <form method="POST">
+
+            <!-- Match Type -->
+            <label>Match Type</label>
+
+            <select name="match_type" required>
+                <option value="T20">T20</option>
+                <option value="ODI">ODI</option>
+                <option value="TEST">TEST</option>
+            </select>
+
+            <!-- Innings -->
+            <label>Innings</label>
+
+            <select name="innings" required>
+                <option value="1">1st Innings</option>
+                <option value="2">2nd Innings</option>
+            </select>
+
+            <!-- Runs -->
+            <label>Current Runs</label>
+
+            <input type="number" name="runs" required>
+
+            <!-- Wickets -->
+            <label>Wickets Lost</label>
+
+            <input type="number" name="wickets" min="0" max="10" required>
+
+            <!-- Overs -->
+            <label>Overs Completed</label>
+
+            <input type="number" step="0.1" name="overs" required>
+
+            <!-- Target -->
+            <label>Target Score (Only for 2nd Innings)</label>
+
+            <input type="number" name="target">
+
+            <!-- Toss -->
+            <label>Did Team Win Toss?</label>
+
+            <select name="toss" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <button type="submit">
+                Predict Match
+            </button>
+
+        </form>
+
+        {% if result %}
+
+        <div class="result-box">
+
+            <h2>📊 Match Analysis</h2>
+
+            <p>🔥 Current Run Rate: {{ current_rr }}</p>
+
+            {% if runs_needed > 0 %}
+                <p>🏃 Runs Needed: {{ runs_needed }}</p>
+                <p>⚡ Required Run Rate: {{ required_rr }}</p>
+            {% endif %}
+
+            <div class="prediction">
+                🏆 Team will likely: {{ result }}
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
