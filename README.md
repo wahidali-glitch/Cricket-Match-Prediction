@@ -51,12 +51,13 @@ The system uses the **Decision Tree Algorithm** to analyze cricket match data an
 
 ## 📸 Screenshots
 
-### 📊 Match Prediction Form
-![Prediction Form](screenshots/dashboard(2).png)
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home Page](dashboard%20(2).png)
 
 ### 🤖 Prediction Result
-![Prediction Result](screenshots/result.png)
-
+![Prediction Result](results.png)
 ---
 
 ## ▶️ How to Run the Project
